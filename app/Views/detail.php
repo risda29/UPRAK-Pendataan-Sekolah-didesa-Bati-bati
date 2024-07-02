@@ -39,7 +39,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script>
-    var map = L.map('map').setView([-3.629525, 114.719896], 13);
+    // var map = L.map('map').setView([-3.801360, 114.767800], 13);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -59,9 +59,9 @@
         popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
     });
 
-    L.marker([-3.629525, 114.719896], {
-        icon: greenIcon
-    }).addTo(map);
+    // L.marker([-3.629525, 114.719896], {
+    //     icon: greenIcon
+    // }).addTo(map);
 
     // menambah data ke map
     var geojsonLayer = L.geoJSON(geojson, {
