@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class SigModel extends Model
 {
-    protected $table = 'webgis';
+    protected $table = 'web_gis';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
