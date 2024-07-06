@@ -46,8 +46,8 @@ class PetaModel extends Model
 
     public function getPeta() //method mengabil data agenda dan user
     {
-        return $this->select('peta.*, webgis.*')
-            ->join('webgis', 'peta.id_peta = webgis.id_peta')
+        return $this->select('peta.*, web_sig.*')
+            ->join('web_sig', 'peta.id_peta = web_sig.id_peta')
             ->orderBy('peta.id_peta', 'DESC')
             ->findAll();
     }

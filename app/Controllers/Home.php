@@ -21,6 +21,7 @@ class Home extends BaseController
         $petas = $this->petaModel->findAll();
         $features = [];
         $dataPeta = [];
+        $geoJson = [];
 
         foreach ($petas as $key) {
             $gis = $this->sigModel->where('id_peta', $key['id_peta'])->findAll();
@@ -68,6 +69,7 @@ class Home extends BaseController
         $petas = $this->petaModel->where('id_peta', $id)->findAll();
         $features = [];
         $dataPeta = [];
+        $geoJson = [];
 
         foreach ($petas as $key) {
             $gis = $this->sigModel->where('id_peta', $key['id_peta'])->findAll();
@@ -109,7 +111,7 @@ class Home extends BaseController
     {
         $dataPost = $this->request->getVar();
         $dataPeta = [
-            'nama_peta' => $dataPost['nama-peta'],
+            'nama_peta' => $dataPost['nama_peta'],
         ];
 
         $this->petaModel->save($dataPeta);
@@ -139,7 +141,7 @@ class Home extends BaseController
     {
         $dataPost = $this->request->getVar();
         $dataPeta = [
-            'nama_peta' => $dataPost['nama-peta'],
+            'nama_peta' => $dataPost['nama_peta'],
         ];
 
         // Menggunakan set() dan save() untuk meng-update data
