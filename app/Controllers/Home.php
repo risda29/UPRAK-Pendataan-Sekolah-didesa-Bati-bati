@@ -142,28 +142,34 @@ class Home extends BaseController
             'nama_peta' => $dataPost['nama-peta'],
         ];
 
-        $this->petaModel->update($dataPost['id'], $dataPeta);
-        $this->sigModel->where('id_peta', $dataPost['id'])->delete();
+        // Menggunakan set() dan save() untuk meng-update data
+        if (isset($dataPost['id'])) {
+            $this->petaModel->set($dataPeta)->where('id_peta', $dataPost['id'])->update();
+            $this->sigModel->where('id_peta', $dataPost['id'])->delete();
 
-        $geoJson = $this->request->getPost('geojson');
-        $data = json_decode($dataPost['geojson']);
+            $geoJson = $this->request->getPost('geojson');
+            $data = json_decode($dataPost['geojson']);
 
-        foreach ($data->features as $feature) {
-            $name = $feature->properties->name;
-            $coordinates = json_encode($feature->geometry->coordinates);
-            $type = $feature->geometry->type;
+            foreach ($data->features as $feature) {
+                $name = $feature->properties->name;
+                $coordinates = json_encode($feature->geometry->coordinates);
+                $type = $feature->geometry->type;
 
-            $dataToSave = [
-                'name' => $name,
-                'coordinat' => $coordinates,
-                'type' => $type,
-                'id_peta' => $dataPost['id'],
-            ];
+                $dataToSave = [
+                    'name' => $name,
+                    'coordinat' => $coordinates,
+                    'type' => $type,
+                    'id_peta' => $dataPost['id'],
+                ];
 
-            $this->sigModel->save($dataToSave);
+                $this->sigModel->save($dataToSave);
+            }
+
+            session()->setFlashData('success', 'Data Berhasil diubah');
+        } else {
+            session()->setFlashData('error', 'ID Peta tidak ditemukan');
         }
 
-        session()->setFlashData('success', 'Data Berhasil diubah');
         return redirect()->to('/');
     }
 
