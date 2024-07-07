@@ -39,4 +39,22 @@ class Home extends BaseController
         return view('v_template', $data);
     }
 
+    public function polygon()
+    {
+        $data = [
+            'judul' => 'Polygon',
+            'page' => 'v_polygon',
+        ];
+        return view('v_template', $data);
+    }
+    public function geojson()
+    {
+        $data = [
+            'judul' => 'Geojson',
+            'page' => 'v_geojson',
+        ];
+        return view('v_template', $data);
+    }
+
+
 }
