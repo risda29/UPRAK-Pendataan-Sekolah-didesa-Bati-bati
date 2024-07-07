@@ -2,184 +2,41 @@
 
 namespace App\Controllers;
 
-use App\Models\PetaModel;
-use App\Models\SigModel;
-
 class Home extends BaseController
 {
-    protected $petaModel;
-    protected $sigModel;
-
-    public function __construct()
+    public function index()
     {
-        $this->petaModel = new PetaModel();
-        $this->sigModel = new SigModel();
-    }
-
-    public function index(): string
-    {
-        $petas = $this->petaModel->findAll();
-        $features = [];
-        $dataPeta = [];
-        $geoJson = [];
-
-        foreach ($petas as $key) {
-            $gis = $this->sigModel->where('id_peta', $key['id_peta'])->findAll();
-            foreach ($gis as $row) {
-                $name = $row['name'];
-                $coordinates = json_decode($row['coordinat']);
-                $type = $row['type'];
-
-                $feature = [
-                    'type' => 'Feature',
-                    'properties' => [
-                        'name' => $name,
-                    ],
-                    'geometry' => [
-                        'coordinates' => $coordinates,
-                        'type' => $type,
-                    ],
-                    'id' => count($features),
-                ];
-
-                array_push($features, $feature);
-            }
-            $geoJson = [
-                'type' => 'FeatureCollection',
-                'features' => $features,
-            ];
-
-            $dataPeta[] = [
-                'nama_peta' => $key['nama_peta'],
-                'id_peta' => $key['id_peta'],
-                'geoJson' => json_encode($geoJson),
-            ];
-        }
-
         $data = [
-            'peta' => $dataPeta,
-            'geoJson' => json_encode($geoJson),
+            'judul' => 'Dashboard',
+            'page' => 'v_dashboard',
         ];
-
-        return view('index', $data);
+        return view('v_template', $data);
     }
-
-    public function detail($id): string
+    public function viewMap()
     {
-        $petas = $this->petaModel->where('id_peta', $id)->findAll();
-        $features = [];
-        $dataPeta = [];
-        $geoJson = [];
-
-        foreach ($petas as $key) {
-            $gis = $this->sigModel->where('id_peta', $key['id_peta'])->findAll();
-            foreach ($gis as $row) {
-                $name = $row['name'];
-                $coordinates = json_decode($row['coordinat']);
-                $type = $row['type'];
-
-                $feature = [
-                    'type' => 'Feature',
-                    'properties' => [
-                        'name' => $name,
-                    ],
-                    'geometry' => [
-                        'coordinates' => $coordinates,
-                        'type' => $type,
-                    ],
-                    'id' => count($features),
-                ];
-
-                array_push($features, $feature);
-            }
-            $geoJson = [
-                'type' => 'FeatureCollection',
-                'features' => $features,
-            ];
-
-            $dataPeta = [
-                'nama_peta' => $key['nama_peta'],
-                'id_peta' => $key['id_peta'],
-                'geoJson' => json_encode($geoJson),
-            ];
-        }
-
-        return view('detail', $dataPeta);
-    }
-
-    public function tambahData()
-    {
-        $dataPost = $this->request->getVar();
-        $dataPeta = [
-            'nama_peta' => $dataPost['nama_peta'],
+        $data = [
+            'judul' => 'View Map',
+            'page' => 'v_view_map',
         ];
-
-        $this->petaModel->save($dataPeta);
-
-        $idPeta = $this->petaModel->orderBy('id_peta', 'DESC')->first();
-        $geoJson = $this->request->getPost('geojson');
-        $data = json_decode($dataPost['geojson']);
-
-        foreach ($data->features as $feature) {
-            $name = $feature->properties->name;
-            $coordinates = json_encode($feature->geometry->coordinates);
-            $type = $feature->geometry->type;
-            $dataToSave = [
-                'name' => $name,
-                'coordinat' => $coordinates,
-                'type' => $type,
-                'id_peta' => $idPeta['id_peta'],
-            ];
-            $this->sigModel->save($dataToSave);
-        }
-
-        session()->setFlashData('success', 'Data Berhasil disimpan');
-        return redirect()->to('/');
+        return view('v_template', $data);
     }
 
-    public function edit()
+    public function baseMap()
     {
-        $dataPost = $this->request->getVar();
-        $dataPeta = [
-            'nama_peta' => $dataPost['nama_peta'],
+        $data = [
+            'judul' => 'Base Map',
+            'page' => 'v_base_map',
         ];
-
-        // Menggunakan set() dan save() untuk meng-update data
-        if (isset($dataPost['id'])) {
-            $this->petaModel->set($dataPeta)->where('id_peta', $dataPost['id'])->update();
-            $this->sigModel->where('id_peta', $dataPost['id'])->delete();
-
-            $geoJson = $this->request->getPost('geojson');
-            $data = json_decode($dataPost['geojson']);
-
-            foreach ($data->features as $feature) {
-                $name = $feature->properties->name;
-                $coordinates = json_encode($feature->geometry->coordinates);
-                $type = $feature->geometry->type;
-
-                $dataToSave = [
-                    'name' => $name,
-                    'coordinat' => $coordinates,
-                    'type' => $type,
-                    'id_peta' => $dataPost['id'],
-                ];
-
-                $this->sigModel->save($dataToSave);
-            }
-
-            session()->setFlashData('success', 'Data Berhasil diubah');
-        } else {
-            session()->setFlashData('error', 'ID Peta tidak ditemukan');
-        }
-
-        return redirect()->to('/');
+        return view('v_template', $data);
     }
 
-    public function delete($id)
+    public function marker()
     {
-        $this->sigModel->where('id_peta', $id)->delete();
-        $this->petaModel->delete($id);
-        session()->setFlashData('success', 'Data Berhasil dihapus');
-        return redirect()->to('/');
+        $data = [
+            'judul' => 'Marker',
+            'page' => 'v_marker',
+        ];
+        return view('v_template', $data);
     }
+
 }
