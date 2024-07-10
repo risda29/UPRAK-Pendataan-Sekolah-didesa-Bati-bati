@@ -7,11 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-<<<<<<< HEAD
         <title> Risda_2201301185<?= $judul?></title>
-=======
-        <title>Risda_2201301185<?= $judul?></title>
->>>>>>> dbddb0282d3259d01f90da41ea026e18747bf644
         <link href="<?= base_url('sb-Admin')?>/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -67,7 +63,7 @@
                                 Marker
                             </a>
 
-<<<<<<< HEAD
+
                             <div class="sb-sidenav-menu-heading">Dengan Database</div>
                             <a class="nav-link" href="charts.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
@@ -75,7 +71,6 @@
                             </a>
                             <a class="nav-link" href="tables.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-=======
                             <a class="nav-link" href="<?=base_url('Home/polygon')?>">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-arrow-trend-up"></i></i></div>
                                 Polygon
@@ -102,7 +97,6 @@
                             
                             <a class="nav-link" href="tables.html">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-gear"></i></div>
->>>>>>> dbddb0282d3259d01f90da41ea026e18747bf644
                                 Tables
                             </a>
                         </div>
