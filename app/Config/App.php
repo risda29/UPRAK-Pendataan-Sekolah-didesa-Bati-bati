@@ -19,7 +19,7 @@ class App extends BaseConfig
 
     public string $baseURL = 'http://localhost/Uprak-SIG/public/';
 
-    public string $baseURL = 'http://localhost:8080/';
+    // public string $baseURL = 'http://localhost:8080/';
 
 
     /**
