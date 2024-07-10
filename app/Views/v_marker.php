@@ -38,15 +38,12 @@ const layerControl = L.control.layers(baseLayers).addTo(map);
 
         L.marker([-3.608034004225829, 114.69932552379747])
         .bindPopup("<img src='<?= base_url('gambar/darussalim.jpg')?>' width='250px'> <br>"+
-<<<<<<< HEAD
-=======
             // "<b> lokasi </b> <br>" + 
->>>>>>> dbddb0282d3259d01f90da41ea026e18747bf644
              "Nama Sekolah:Pondok Pesantren Darussalim <br>" +
         "Alamat :jalan darussalim <br>")
         .addTo(map);
 
-<<<<<<< HEAD
+
         //     L.circle([-3.608034004225829, 114.69932552379747], {
         //     radius: 70, // radius lingkaran dalam meter
         //     color: 'yellow', // warna garis lingkaran
@@ -70,8 +67,7 @@ const layerControl = L.control.layers(baseLayers).addTo(map);
 
 
 
-=======
->>>>>>> dbddb0282d3259d01f90da41ea026e18747bf644
+
         L.marker([-3.601376333402981, 114.69953557184017])
         .bindPopup("<img src='<?= base_url('gambar/ubudiyah.jpg')?>' width='250px'> <br>"+
             "<b> lokasi </b> <br>" + 
@@ -82,9 +78,8 @@ const layerControl = L.control.layers(baseLayers).addTo(map);
 L.marker([-3.5996889193491706, 114.70374048198136]).addTo(map);
 L.marker([-3.6057629732546457, 114.70551078720082]).addTo(map);
 L.marker([-3.615619639507791, 114.69926833527367]).addTo(map);
-<<<<<<< HEAD
+HEAD
 </script>
 
-=======
 </script>
->>>>>>> dbddb0282d3259d01f90da41ea026e18747bf644
+

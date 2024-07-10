@@ -7,9 +7,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title> Risda_2201301185<?= $judul?></title>
+        <title> Risda_2201301185 <?= $judul?></title>
         <link href="<?= base_url('sb-Admin')?>/css/styles.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous">
+        </script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+            <script src="<?= base_url('sb-Admin')?>/js/scripts.js"></script>
+
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     </head>
@@ -62,15 +67,6 @@
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-location-dot"></i></i></div>
                                 Marker
                             </a>
-
-
-                            <div class="sb-sidenav-menu-heading">Dengan Database</div>
-                            <a class="nav-link" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a>
-                            <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             <a class="nav-link" href="<?=base_url('Home/polygon')?>">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-arrow-trend-up"></i></i></div>
                                 Polygon
@@ -120,7 +116,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div class="text-muted">Copyright &copy; Titik Lokasi Sekolah Desa Bati-Bati</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
@@ -131,7 +127,5 @@
                 </footer>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="<?= base_url('sb-Admin')?>/js/scripts.js"></script>
     </body>
 </html>
