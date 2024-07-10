@@ -16,11 +16,11 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-<<<<<<< HEAD
+
     public string $baseURL = 'http://localhost/Uprak-SIG/public/';
-=======
+
     public string $baseURL = 'http://localhost:8080/';
->>>>>>> dbddb0282d3259d01f90da41ea026e18747bf644
+
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.

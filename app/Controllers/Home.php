@@ -39,8 +39,8 @@ class Home extends BaseController
         return view('v_template', $data);
     }
 
-<<<<<<< HEAD
-=======
+
+
     public function polygon()
     {
         $data = [
@@ -59,5 +59,5 @@ class Home extends BaseController
     }
 
 
->>>>>>> dbddb0282d3259d01f90da41ea026e18747bf644
+
 }
