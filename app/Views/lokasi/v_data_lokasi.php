@@ -1,3 +1,8 @@
+<div class="row mb-3">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+        <a href="<?= base_url('lokasi/tambah') ?>" class="btn btn-success">Tambah Data</a>
+    </div>
+</div>
 <div class="row">
     <div class="col-12">
         <table class="table table-bordered" id="datatablesSimple">

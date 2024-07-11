@@ -1,4 +1,4 @@
-<div id="map" style="width: 100%; height: 100vh;"></div>
+<div id="map" style="width: 100%; height: 70vh;"></div>
 <script>
  var accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'; // Ganti dengan token akses Mapbox Anda
 
