@@ -18,6 +18,7 @@ class Lokasi extends BaseController
         $data = [
             'judul' => 'Data Lokasi',
             'page' => 'lokasi/v_data_lokasi',
+            'lokasi' => $this->ModelLokasi->getAllData(),
         ];
         return view('v_template', $data);
     }
@@ -102,5 +103,6 @@ class Lokasi extends BaseController
         return view('v_template', $data);
     }
 
+   
 
 }

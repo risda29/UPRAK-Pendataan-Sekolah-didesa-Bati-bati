@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-12">
+        <table class="table table-bordered" id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Sekolah</th>
+                    <th>Jenis Sekolah</th>
+                    <th>Langitude</th>
+                    <th>Longitude</th>
+                    <th>Foto Sekolah</th>
+                    <th>Aksi</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <?php $no = 1;
+            foreach ($lokasi as $key => $value){ ?>
+                    <tr>
+                    <td class="no-border"> <?= $no++ ?> </td>
+                        <td> <?= $value['nama_sekolah'] ?> </td>
+                        <td> <?= $value['jenis_sekolah'] ?> </td>
+                        <td> <?= $value['latitude'] ?> </td>
+                        <td> <?= $value['longitude'] ?> </td>
+                        <td><img src="<?= base_url('foto/'. $value['foto_sekolah'])?>" width="150px"></td>
+                        <td>
+                        <a href=""class="btn btn-warning"> Edit</a>
+                        <a href=""class="btn btn-danger"> Hapus</a>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</div>
