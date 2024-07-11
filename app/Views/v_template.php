@@ -86,8 +86,10 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?=base_url('Lokasi/inputlokasi')?>">Input Lokasi</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Data Lokasi</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Pemetaan Lokasi</a>
+                                    <a class="nav-link" href="<?=base_url('Lokasi/datalokasi')?>">Data Lokasi</a>
+                                    <!-- <a class="nav-link" href="Input Lokasi</a> -->
+
+                                    <a class="nav-link" href="<?=base_url('Lokasi/pemetaanlokasi')?>">Pemetaan Lokasi</a>
                                 </nav>
                             </div>
                             

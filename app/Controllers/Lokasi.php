@@ -17,7 +17,7 @@ class Lokasi extends BaseController
     {
         $data = [
             'judul' => 'Data Lokasi',
-            'page' => 'v_data_lokasi',
+            'page' => 'lokasi/v_data_lokasi',
         ];
         return view('v_template', $data);
     }
@@ -27,6 +27,7 @@ class Lokasi extends BaseController
         $data = [
             'judul' => 'Input Lokasi',
             'page' => 'lokasi/v_input_lokasi',
+            
         ];
         return view('v_template', $data);
     }
@@ -83,10 +84,23 @@ class Lokasi extends BaseController
             ];
             $foto_sekolah->move('foto', $nama_file_foto);
             $this->ModelLokasi->insertData($data);
-            return redirect()->to('lokasi/index');
+            session()->setFlashdata('pesan', 'Data Lokasi Berhasil ditambah');
+            return redirect()->to('lokasi/inputlokasi');
             
         } else {
             return redirect()->to('lokasi/inputlokasi')->withInput();
         }
     }
+
+    public function pemetaanLokasi()
+    {
+        $data = [
+            'judul' => 'Pemetaan Lokasi',
+            'page' => 'lokasi/v_pemetaan_lokasi',
+            'lokasi' => $this->ModelLokasi->getAllData(),
+        ];
+        return view('v_template', $data);
+    }
+
+
 }

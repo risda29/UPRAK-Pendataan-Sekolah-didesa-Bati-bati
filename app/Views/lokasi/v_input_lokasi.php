@@ -6,6 +6,13 @@
             <div class="col-sm-4">
                 <div class="row">
                     <div class="row">
+                       <?php 
+                        if(session()->getFlashdata('pesan')){
+                            echo '<div class = "alert alert-success">';
+                            echo session()->getFlashdata('pesan');
+                            echo '</div>';
+                        }
+                        ?>
                         <?php $errors = validation_errors() ?>
                         <?php echo form_open_multipart('Lokasi/insertData') ?>
                     <div class="form-group">
@@ -109,4 +116,6 @@ $.getJSON("<?= base_url('geojson/sekolah.geojson') ?>", function(data){
     }).addTo(map);
 });
 
+
+       
 </script>
