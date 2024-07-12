@@ -15,21 +15,20 @@
                     <th>Longitude</th>
                     <th>Foto Sekolah</th>
                     <th>Aksi</th>
-                    
                 </tr>
             </thead>
             <tbody>
                 <?php $no = 1;
-            foreach ($lokasi as $key => $value){ ?>
+            foreach ($lokasi as $key => $value) { ?>
                     <tr>
-                    <td class="no-border"> <?= $no++ ?> </td>
+                    <td><?= $no++ ?> </td>
                         <td> <?= $value['nama_sekolah'] ?> </td>
                         <td> <?= $value['jenis_sekolah'] ?> </td>
                         <td> <?= $value['latitude'] ?> </td>
                         <td> <?= $value['longitude'] ?> </td>
                         <td><img src="<?= base_url('foto/'. $value['foto_sekolah'])?>" width="150px"></td>
                         <td>
-                        <a href=""class="btn btn-warning"> Edit</a>
+                        <a href="<?= base_url('lokasi/editlokasi/'. $value['id_lokasi']) ?>"class="btn btn-warning"> Edit</a>
                         <a href=""class="btn btn-danger"> Hapus</a>
                         </td>
                     </tr>

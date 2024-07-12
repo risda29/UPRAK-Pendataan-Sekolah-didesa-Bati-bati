@@ -6,15 +6,33 @@ use CodeIgniter\Model;
 
 class ModelLokasi extends Model
 {
-  public function insertData($data){
-    $this->db->table('tbl_lokasi')->insert($data) ;
-  }
-  public function getAllData()
-{
-    return $this->db->table('tbl_lokasi')
-    ->get()->getResultArray();
-    
-}
+    protected $table = 'tbl_lokasi'; // Nama tabel di database
 
+    public function insertData($data)
+    {
+        // Insert data ke dalam tabel
+        return $this->db->table($this->table)->insert($data);
+    }
 
+    public function updateData($id_lokasi, $data)
+    {
+        // Update data berdasarkan id_lokasi
+        return $this->db->table($this->table)
+            ->where('id_lokasi', $id_lokasi)
+            ->update($data);
+    }
+
+    public function getAllData()
+    {
+        // Ambil semua data dari tabel
+        return $this->db->table($this->table)
+            ->get()->getResultArray();
+    }
+
+    public function getDataById($id_lokasi)
+    {
+        return $this->db->table($this->table)
+            ->where('id_lokasi', $id_lokasi)
+            ->get()->getRowArray();
+    }
 }
