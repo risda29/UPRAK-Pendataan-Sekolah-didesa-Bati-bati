@@ -216,4 +216,24 @@ class Lokasi extends BaseController
         ];
         return view('v_template', $data);
     }
+   
+
+
+    public function deleteLokasi($id_lokasi)
+{
+    // Cek apakah data dengan ID tersebut ada
+    $lokasi = $this->ModelLokasi->getDataById($id_lokasi);
+    if (!$lokasi) {
+        session()->setFlashdata('error', 'Data tidak ditemukan');
+        return redirect()->to(base_url('Lokasi/index'));
+    }
+
+    // Hapus data
+    $this->ModelLokasi->deleteData($id_lokasi);
+    session()->setFlashdata('pesan', 'Data Lokasi Berhasil Dihapus');
+    return redirect()->to(base_url('Lokasi/index'));
+}
+
+
+
 }

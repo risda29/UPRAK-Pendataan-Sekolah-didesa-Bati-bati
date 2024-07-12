@@ -29,7 +29,7 @@
                         <td><img src="<?= base_url('foto/'. $value['foto_sekolah'])?>" width="150px"></td>
                         <td>
                         <a href="<?= base_url('lokasi/editlokasi/'. $value['id_lokasi']) ?>"class="btn btn-warning"> Edit</a>
-                        <a href=""class="btn btn-danger"> Hapus</a>
+                        <a href="<?= base_url('lokasi/deleteLokasi/'. $value['id_lokasi']) ?>"class="btn btn-danger" onclick="return confirm('Anda Yakin Akan Menghapus Lokasi Ini')"> Hapus</a>
                         </td>
                     </tr>
                 <?php } ?>
