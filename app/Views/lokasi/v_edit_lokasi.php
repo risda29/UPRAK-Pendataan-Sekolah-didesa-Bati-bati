@@ -5,49 +5,47 @@
         </div>
         <div class="col-sm-4">
             <div class="row">
-                <div class="row">
-                    <?php if (session()->getFlashdata('pesan')): ?>
-                        <div class="alert alert-success">
-                            <?= session()->getFlashdata('pesan') ?>
-                        </div>
-                    <?php endif; ?>
-                    <?php $errors = validation_errors() ?>
-                    <?= form_open_multipart('lokasi/updateData/' . $lokasi['id_lokasi']) ?>
-                        <div class="form-group">
-                            <label>Nama Sekolah</label>
-                            <input class="form-control" name="nama_sekolah" value="<?= $lokasi['nama_sekolah'] ?>">
-                            <p class="text-danger"><?= validation_show_error('nama_sekolah') ?></p>
-                        </div>
-                        <div class="form-group">
-                            <label>Jenis Sekolah</label>
-                            <input class="form-control" name="jenis_sekolah" value="<?= $lokasi['jenis_sekolah'] ?>">
-                            <p class="text-danger"><?= validation_show_error('jenis_sekolah') ?></p>
-                        </div>
-                        <div class="form-group">
-                            <label>Latitude</label>
-                            <input class="form-control" name="latitude" value="<?= $lokasi['latitude'] ?>">
-                            <p class="text-danger"><?= validation_show_error('latitude') ?></p>
-                        </div>
-                        <div class="form-group">
-                            <label>Longitude</label>
-                            <input class="form-control" name="longitude" value="<?= $lokasi['longitude'] ?>">
-                            <p class="text-danger"><?= validation_show_error('longitude') ?></p>
-                        </div>
-                        <div class="form-group">
-                            <label>Foto Sekolah</label>
-                            <input type="file" class="form-control" name="foto_sekolah">
-                            <p class="text-danger"><?= validation_show_error('foto_sekolah') ?></p>
-                            <img src="<?= base_url('foto/' . $lokasi['foto_sekolah']) ?>" width="200px">
-                        </div>
-                        <!-- <button type="submit" class="btn btn-primary">Simpan</button> -->
-                        <a href="<?= base_url('Lokasi/pemetaanlokasi') ?>" class="btn btn-primary">Simpan</a>
-                        <a href="<?= base_url('Lokasi/index') ?>" class="btn btn-danger">Batal</a>
-                    <?= form_close() ?>
-                </div>
+                <?php if (session()->getFlashdata('pesan')): ?>
+                    <div class="alert alert-success">
+                        <?= session()->getFlashdata('pesan') ?>
+                    </div>
+                <?php endif; ?>
+                <?php $errors = session()->get('errors'); ?>
+                <?= form_open_multipart('Lokasi/updateData/' . $lokasi['id_lokasi']) ?>
+                    <div class="form-group">
+                        <label>Nama Sekolah</label>
+                        <input class="form-control" name="nama_sekolah" value="<?= $lokasi['nama_sekolah'] ?>">
+                        <p class="text-danger"><?= isset($errors['nama_sekolah']) ? $errors['nama_sekolah'] : '' ?></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Jenis Sekolah</label>
+                        <input class="form-control" name="jenis_sekolah" value="<?= $lokasi['jenis_sekolah'] ?>">
+                        <p class="text-danger"><?= isset($errors['jenis_sekolah']) ? $errors['jenis_sekolah'] : '' ?></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Latitude</label>
+                        <input class="form-control" name="latitude" value="<?= $lokasi['latitude'] ?>">
+                        <p class="text-danger"><?= isset($errors['latitude']) ? $errors['latitude'] : '' ?></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Longitude</label>
+                        <input class="form-control" name="longitude" value="<?= $lokasi['longitude'] ?>">
+                        <p class="text-danger"><?= isset($errors['longitude']) ? $errors['longitude'] : '' ?></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Foto Sekolah</label>
+                        <input type="file" class="form-control" name="foto_sekolah">
+                        <p class="text-danger"><?= isset($errors['foto_sekolah']) ? $errors['foto_sekolah'] : '' ?></p>
+                        <img src="<?= base_url('foto/' . $lokasi['foto_sekolah']) ?>" width="200px">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <a href="<?= base_url('Lokasi/index') ?>" class="btn btn-danger">Batal</a>
+                <?= form_close() ?>
             </div>
         </div>
     </div>
 </div>
+
 
 <script>
     var accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'; // Ganti dengan token akses Mapbox Anda

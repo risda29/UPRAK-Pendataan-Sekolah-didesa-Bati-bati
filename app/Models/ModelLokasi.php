@@ -14,14 +14,6 @@ class ModelLokasi extends Model
         return $this->db->table($this->table)->insert($data);
     }
 
-    public function updateData($id_lokasi, $data)
-    {
-        // Update data berdasarkan id_lokasi
-        return $this->db->table($this->table)
-            ->where('id_lokasi', $id_lokasi)
-            ->update($data);
-    }
-
     public function getAllData()
     {
         // Ambil semua data dari tabel
@@ -29,10 +21,27 @@ class ModelLokasi extends Model
             ->get()->getResultArray();
     }
 
+    // public function getDataById($id_lokasi)
+    // {
+    //     return $this->db->table($this->table)
+    //         ->where('id_lokasi', $id_lokasi)
+    //         ->get()->getRowArray();
+    // }
+
     public function getDataById($id_lokasi)
-    {
-        return $this->db->table($this->table)
-            ->where('id_lokasi', $id_lokasi)
-            ->get()->getRowArray();
-    }
+{
+    return $this->db->table('tbl_lokasi')
+                    ->where('id_lokasi', $id_lokasi)
+                    ->get()
+                    ->getRowArray();
+}
+
+public function updateData($data)
+{
+    $this->db->table('tbl_lokasi')
+             ->where('id_lokasi', $data['id_lokasi'])
+             ->update($data);
+}
+
+
 }
