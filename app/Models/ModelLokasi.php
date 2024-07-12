@@ -6,17 +6,17 @@ use CodeIgniter\Model;
 
 class ModelLokasi extends Model
 {
-    protected $table = 'tbl_lokasi'; // Nama tabel di database
+    protected $table = 'tbl_lokasi'; 
 
     public function insertData($data)
     {
-        // Insert data ke dalam tabel
+        
         return $this->db->table($this->table)->insert($data);
     }
 
     public function getAllData()
     {
-        // Ambil semua data dari tabel
+       
         return $this->db->table($this->table)
             ->get()->getResultArray();
     }
