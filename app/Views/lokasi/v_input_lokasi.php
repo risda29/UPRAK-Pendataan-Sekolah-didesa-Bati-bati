@@ -39,6 +39,7 @@
                     </div>
                     
                     <button type="submit" class="btn btn-primary">Simpan</button>
+                   
                     <a href="<?= base_url('lokasi/pemetaanlokasi') ?>" class="btn btn-danger">Batal</a>
                 <?= form_close() ?>
             </div>

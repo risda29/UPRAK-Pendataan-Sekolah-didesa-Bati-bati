@@ -99,7 +99,7 @@ class Lokasi extends BaseController
             session()->setFlashdata('pesan', 'Data Lokasi Berhasil ditambah');
 
             // Redirect ke halaman inputlokasi
-            return redirect()->to('inputlokasi');
+            return redirect()->to('lokasi/pemetaanLokasi');
         } else {
             // Jika validasi gagal, kembalikan ke halaman inputlokasi dengan input sebelumnya
             return redirect()->to('inputlokasi')->withInput()->with('errors', $this->validator);
@@ -120,87 +120,87 @@ class Lokasi extends BaseController
     }
 
     // Metode untuk update data
-    public function updateData($id_lokasi)
-    {
-        // Validasi input
-        if ($this->validate([
-            'nama_sekolah' => [
-                'label' => 'Nama Sekolah',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Tidak Boleh Kosong'
-                ]
-            ],
-            'jenis_sekolah' => [
-                'label' => 'Jenis Sekolah',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Tidak Boleh Kosong'
-                ]
-            ],
-            'latitude' => [
-                'label' => 'Latitude',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Tidak Boleh Kosong'
-                ]
-            ],
-            'longitude' => [
-                'label' => 'Longitude',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Tidak Boleh Kosong'
-                ]
-            ],
-        ])) {
-            // Ambil file foto dari form
-            $foto_sekolah = $this->request->getFile('foto_sekolah');
+    // public function updateData($id_lokasi)
+    // {
+    //     // Validasi input
+    //     if ($this->validate([
+    //         'nama_sekolah' => [
+    //             'label' => 'Nama Sekolah',
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => '{field} Tidak Boleh Kosong'
+    //             ]
+    //         ],
+    //         'jenis_sekolah' => [
+    //             'label' => 'Jenis Sekolah',
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => '{field} Tidak Boleh Kosong'
+    //             ]
+    //         ],
+    //         'latitude' => [
+    //             'label' => 'Latitude',
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => '{field} Tidak Boleh Kosong'
+    //             ]
+    //         ],
+    //         'longitude' => [
+    //             'label' => 'Longitude',
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => '{field} Tidak Boleh Kosong'
+    //             ]
+    //         ],
+    //     ])) {
+    //         // Ambil file foto dari form
+    //         $foto_sekolah = $this->request->getFile('foto_sekolah');
 
-            // Jika ada file foto yang diupload, proses file tersebut
-            if ($foto_sekolah->isValid()) {
-                // Generate nama file baru
-                $nama_file_foto = $foto_sekolah->getRandomName();
+    //         // Jika ada file foto yang diupload, proses file tersebut
+    //         if ($foto_sekolah->isValid()) {
+    //             // Generate nama file baru
+    //             $nama_file_foto = $foto_sekolah->getRandomName();
 
-                // Pindahkan file foto ke folder foto
-                $foto_sekolah->move('foto', $nama_file_foto);
+    //             // Pindahkan file foto ke folder foto
+    //             $foto_sekolah->move('foto', $nama_file_foto);
 
-                // Hapus foto lama jika ada
-                $lokasi = $this->ModelLokasi->getDataById($id_lokasi);
-                if ($lokasi['foto_sekolah'] && file_exists('foto/' . $lokasi['foto_sekolah'])) {
-                    unlink('foto/' . $lokasi['foto_sekolah']);
-                }
+    //             // Hapus foto lama jika ada
+    //             $lokasi = $this->ModelLokasi->getDataById($id_lokasi);
+    //             if ($lokasi['foto_sekolah'] && file_exists('foto/' . $lokasi['foto_sekolah'])) {
+    //                 unlink('foto/' . $lokasi['foto_sekolah']);
+    //             }
 
-                // Simpan data ke dalam array
-                $data = [
-                    'nama_sekolah' => $this->request->getPost('nama_sekolah'),
-                    'jenis_sekolah' => $this->request->getPost('jenis_sekolah'),
-                    'latitude' => $this->request->getPost('latitude'),
-                    'longitude' => $this->request->getPost('longitude'),
-                    'foto_sekolah' => $nama_file_foto
-                ];
-            } else {
-                // Jika tidak ada file yang diupload, simpan data tanpa perubahan foto
-                $data = [
-                    'nama_sekolah' => $this->request->getPost('nama_sekolah'),
-                    'jenis_sekolah' => $this->request->getPost('jenis_sekolah'),
-                    'latitude' => $this->request->getPost('latitude'),
-                    'longitude' => $this->request->getPost('longitude')
-                ];
-            }
+    //             // Simpan data ke dalam array
+    //             $data = [
+    //                 'nama_sekolah' => $this->request->getPost('nama_sekolah'),
+    //                 'jenis_sekolah' => $this->request->getPost('jenis_sekolah'),
+    //                 'latitude' => $this->request->getPost('latitude'),
+    //                 'longitude' => $this->request->getPost('longitude'),
+    //                 'foto_sekolah' => $nama_file_foto
+    //             ];
+    //         } else {
+    //             // Jika tidak ada file yang diupload, simpan data tanpa perubahan foto
+    //             $data = [
+    //                 'nama_sekolah' => $this->request->getPost('nama_sekolah'),
+    //                 'jenis_sekolah' => $this->request->getPost('jenis_sekolah'),
+    //                 'latitude' => $this->request->getPost('latitude'),
+    //                 'longitude' => $this->request->getPost('longitude')
+    //             ];
+    //         }
 
-            // Panggil method updateData dari model untuk mengupdate data
-            $this->ModelLokasi->updateData($id_lokasi, $data);
+    //         // Panggil method updateData dari model untuk mengupdate data
+    //         $this->ModelLokasi->updateData($id_lokasi, $data);
 
-            // Set flashdata untuk pesan sukses
-            session()->setFlashdata('pesan', 'Data Lokasi Berhasil diupdate');
+    //         // Set flashdata untuk pesan sukses
+    //         session()->setFlashdata('pesan', 'Data Lokasi Berhasil diupdate');
 
-            // Redirect ke halaman inputlokasi
-            return redirect()->to('inputlokasi');
-        } else {
-            // Jika validasi gagal, kembalikan ke halaman editlokasi dengan input sebelumnya
-            return redirect()->to('editlokasi/' . $id_lokasi)->withInput()->with('errors', $this->validator);
-        }
-    }
+    //         // Redirect ke halaman inputlokasi
+    //         return redirect()->to('inputlokasi');
+    //     } else {
+    //         // Jika validasi gagal, kembalikan ke halaman editlokasi dengan input sebelumnya
+    //         return redirect()->to('editlokasi/' . $id_lokasi)->withInput()->with('errors', $this->validator);
+    //     }
+    // }
 
     public function pemetaanLokasi()
     {
