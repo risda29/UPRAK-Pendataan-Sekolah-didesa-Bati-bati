@@ -48,11 +48,11 @@
 
 
 <script>
-    var accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'; // Ganti dengan token akses Mapbox Anda
+    var accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'; 
 
     var peta1 = L.tileLayer('https://tile.opentopomap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="https://www.opentopomap.org/">OpenTopoMap</a> contributors',
-        maxZoom: 17, // OpenTopoMap supports up to zoom level 17
+        maxZoom: 17, 
     });
 
     var peta2 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
@@ -70,9 +70,9 @@
     });
 
     const map = L.map('map', {
-        center: [<?= $lokasi['latitude'] ?>, <?= $lokasi['longitude'] ?>], // Koordinat pusat
+        center: [<?= $lokasi['latitude'] ?>, <?= $lokasi['longitude'] ?>], 
         zoom: 16,
-        layers: [peta4] // Layer awal
+        layers: [peta4]
     });
 
     const baseLayers = {
@@ -83,17 +83,15 @@
     };
     const layerControl = L.control.layers(baseLayers).addTo(map);
 
-    // Fungsi untuk mendapatkan warna berdasarkan jenis
     const getColor = (jenis) => {
         switch (jenis) {
-            case 'negeri': return "#ff0000"; // Merah
-            case 'swasta': return "#00ff00"; // Hijau
-            case 'internasional': return "#0000ff"; // Biru
-            default: return "#ffffff"; // Putih sebagai default
+            case 'negeri': return "#ff0000"; 
+            case 'swasta': return "#00ff00"; 
+            case 'internasional': return "#0000ff"; 
+            default: return "#ffffff"; 
         }
     };
 
-    // Memuat geojson
     $.getJSON("<?= base_url('geojson/sekolah.geojson') ?>", function(data) {
         L.geoJson(data, {
             style: function(feature) {
@@ -114,7 +112,7 @@
         }).addTo(map);
     });
 
-    // Menambahkan marker untuk lokasi yang sedang diedit
+    
     L.marker([<?= $lokasi['latitude'] ?>, <?= $lokasi['longitude'] ?>])
         .bindPopup('<img src="<?= base_url('foto/' . $lokasi['foto_sekolah']) ?>" width="150px"><br>' +
             'Nama Sekolah: <b><?= $lokasi["nama_sekolah"] ?></b><br>' +

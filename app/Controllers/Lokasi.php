@@ -97,9 +97,6 @@ class Lokasi extends BaseController
         }
     }
 
-    
-
-
     public function editlokasi($id_lokasi)
     {
         $data = [

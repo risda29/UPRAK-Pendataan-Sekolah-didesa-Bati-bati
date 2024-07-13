@@ -56,6 +56,4 @@ class Home extends BaseController
         return view('v_template', $data);
     }
 
-
-
 }

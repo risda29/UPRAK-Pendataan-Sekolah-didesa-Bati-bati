@@ -75,7 +75,7 @@
             [<?= $value['latitude'] ?> - 0.0003, <?= $value['longitude'] ?> + 0.0003]
 
         ], {
-            color: 'red',
+            color: getColor('<?= $value["jenis_sekolah"] ?>'), 
             fillOpacity: 0.5
         }).addTo(map);
 

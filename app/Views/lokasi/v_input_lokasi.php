@@ -47,11 +47,11 @@
     </div>
 </div>
 <script>
-    var accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'; // Ganti dengan token akses Mapbox Anda
+    var accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'; 
 
     var peta1 = L.tileLayer('https://tile.opentopomap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="https://www.opentopomap.org/">OpenTopoMap</a> contributors',
-        maxZoom: 17, // OpenTopoMap supports up to zoom level 17
+        maxZoom: 17, 
     });
 
     var peta2 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
@@ -69,9 +69,9 @@
     });
 
     const map = L.map('map', {
-        center: [-3.6093790887583572, 114.70113468412184], // Koordinat pusat
+        center: [-3.6093790887583572, 114.70113468412184], 
         zoom: 16,
-        layers: [peta4] // Layer awal
+        layers: [peta4] 
     });
 
     const baseLayers = {
@@ -82,17 +82,16 @@
     };
     const layerControl = L.control.layers(baseLayers).addTo(map);
 
-    // Fungsi untuk mendapatkan warna berdasarkan jenis
+    
     const getColor = (jenis) => {
         switch(jenis) {
-            case 'negeri': return "#ff0000"; // Merah
-            case 'swasta': return "#00ff00"; // Hijau
-            case 'internasional': return "#0000ff"; // Biru
-            default: return "#ffffff"; // Putih sebagai default
+            case 'negeri': return "#ff0000"; 
+            case 'swasta': return "#00ff00"; 
+            default: return "#ffffff"; 
         }
     };
 
-    // Memuat geojson 
+    
     $.getJSON("<?= base_url('geojson/sekolah.geojson') ?>", function(data){
         L.geoJson(data, {
             style: function(feature) {
@@ -113,7 +112,6 @@
         }).addTo(map);
     });
 
-    // Tambahkan polygon dan marker untuk setiap lokasi
     <?php foreach ($lokasi as $key => $value): ?>
         var polygon = L.polygon([
             [<?= $value['latitude'] ?> - 0.0003, <?= $value['longitude'] ?> - 0.0003],
@@ -121,7 +119,7 @@
             [<?= $value['latitude'] ?> + 0.0003, <?= $value['longitude'] ?> + 0.0003],
             [<?= $value['latitude'] ?> - 0.0003, <?= $value['longitude'] ?> + 0.0003]
         ], {
-            color: 'red',
+            color: getColor('<?= $value["jenis_sekolah"] ?>'), 
             fillOpacity: 0.5
         }).addTo(map);
 
