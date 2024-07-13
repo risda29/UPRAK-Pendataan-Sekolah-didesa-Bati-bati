@@ -4,7 +4,7 @@
 
  var peta1 = L.tileLayer('https://tile.opentopomap.org/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; <a href="https://www.opentopomap.org/">OpenTopoMap</a> contributors',
-            maxZoom: 17, // OpenTopoMap supports up to zoom level 17
+            maxZoom: 17, 
         });
 
 
@@ -23,9 +23,9 @@ var peta4 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
         });
 
 const map = L.map('map', {
-    center: [-3.604252179824871, 114.69929968326329], // Koordinat pusat
+    center: [-3.604252179824871, 114.69929968326329], 
     zoom: 16,
-    layers: [peta4] // Layer awal
+    layers: [peta4] 
 });
 
 const baseLayers = {
@@ -38,7 +38,6 @@ const layerControl = L.control.layers(baseLayers).addTo(map);
 
         L.marker([-3.608034004225829, 114.69932552379747])
         .bindPopup("<img src='<?= base_url('gambar/darussalim.jpg')?>' width='250px'> <br>"+
-            // "<b> lokasi </b> <br>" + 
              "Nama Sekolah:Pondok Pesantren Darussalim <br>" +
         "Alamat :jalan darussalim <br>")
         .addTo(map);
@@ -55,15 +54,15 @@ const layerControl = L.control.layers(baseLayers).addTo(map);
         //         "Alamat: Jalan Darussalim <br>")
         // .addTo(map);
 
-            //      L.polygon([
-            //     [-3.608034004225829, 114.69932552379747],
-            //     [-3.5996889193491706, 114.70374048198136],
-            //     [-3.6057629732546457, 114.70551078720082]
-            // ])
-            // .bindPopup("<img src='https://example.com/gambar/darussalim.jpg' width='250px'> <br>"+
-            //         "Nama Sekolah: Pondok Pesantren Darussalim <br>" +
-            //         "Alamat: Jalan Darussalim <br>")
-            // .addTo(map);
+        //          L.polygon([
+        //         [-3.608034004225829, 114.69932552379747],
+        //         [-3.5996889193491706, 114.70374048198136],
+        //         [-3.6057629732546457, 114.70551078720082]
+        //     ])
+        //     .bindPopup("<img src='https://example.com/gambar/darussalim.jpg' width='250px'> <br>"+
+        //             "Nama Sekolah: Pondok Pesantren Darussalim <br>" +
+        //             "Alamat: Jalan Darussalim <br>")
+        //     .addTo(map);
 
 
 

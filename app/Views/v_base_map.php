@@ -1,10 +1,10 @@
 <div id="map" style="width: 100%; height: 70vh;"></div>
 <script>
- var accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'; // Ganti dengan token akses Mapbox Anda
+ var accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'; 
 
  var peta1 = L.tileLayer('https://tile.opentopomap.org/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; <a href="https://www.opentopomap.org/">OpenTopoMap</a> contributors',
-            maxZoom: 17, // OpenTopoMap supports up to zoom level 17
+            maxZoom: 17, 
         });
 
 
@@ -23,9 +23,9 @@ var peta4 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
         });
 
 const map = L.map('map', {
-    center: [-3.604252179824871, 114.69929968326329], // Koordinat pusat
+    center: [-3.604252179824871, 114.69929968326329], 
     zoom: 16,
-    layers: [peta4] // Layer awal
+    layers: [peta4] 
 });
 
 const baseLayers = {
