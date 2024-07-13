@@ -40,7 +40,7 @@
         switch(jenis) {
             case 'negeri': return "#ff0000"; // Merah
             case 'swasta': return "#00ff00"; // Hijau
-            case 'internasional': return "#0000ff"; // Biru
+            // case 'internasional': return "#0000ff"; // Biru
             default: return "#ffffff"; // Putih sebagai default
         }
     };
@@ -69,10 +69,11 @@
     // Tambahkan polygon dan marker untuk setiap lokasi
     <?php foreach ($lokasi as $key => $value): ?>
         var polygon = L.polygon([
-            [<?= $value['latitude'] ?> - 0.001, <?= $value['longitude'] ?> - 0.001],
-            [<?= $value['latitude'] ?> + 0.001, <?= $value['longitude'] ?> - 0.001],
-            [<?= $value['latitude'] ?> + 0.001, <?= $value['longitude'] ?> + 0.001],
-            [<?= $value['latitude'] ?> - 0.001, <?= $value['longitude'] ?> + 0.001]
+            [<?= $value['latitude'] ?> - 0.0003, <?= $value['longitude'] ?> - 0.0003],
+            [<?= $value['latitude'] ?> + 0.0003, <?= $value['longitude'] ?> - 0.0003],
+            [<?= $value['latitude'] ?> + 0.0003, <?= $value['longitude'] ?> + 0.0003],
+            [<?= $value['latitude'] ?> - 0.0003, <?= $value['longitude'] ?> + 0.0003]
+
         ], {
             color: 'red',
             fillOpacity: 0.5

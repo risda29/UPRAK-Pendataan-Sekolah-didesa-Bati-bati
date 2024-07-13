@@ -116,10 +116,10 @@
     // Tambahkan polygon dan marker untuk setiap lokasi
     <?php foreach ($lokasi as $key => $value): ?>
         var polygon = L.polygon([
-            [<?= $value['latitude'] ?> - 0.001, <?= $value['longitude'] ?> - 0.001],
-            [<?= $value['latitude'] ?> + 0.001, <?= $value['longitude'] ?> - 0.001],
-            [<?= $value['latitude'] ?> + 0.001, <?= $value['longitude'] ?> + 0.001],
-            [<?= $value['latitude'] ?> - 0.001, <?= $value['longitude'] ?> + 0.001]
+            [<?= $value['latitude'] ?> - 0.0003, <?= $value['longitude'] ?> - 0.0003],
+            [<?= $value['latitude'] ?> + 0.0003, <?= $value['longitude'] ?> - 0.0003],
+            [<?= $value['latitude'] ?> + 0.0003, <?= $value['longitude'] ?> + 0.0003],
+            [<?= $value['latitude'] ?> - 0.0003, <?= $value['longitude'] ?> + 0.0003]
         ], {
             color: 'red',
             fillOpacity: 0.5
