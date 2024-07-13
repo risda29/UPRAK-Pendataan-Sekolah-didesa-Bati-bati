@@ -113,10 +113,20 @@
         }).addTo(map);
     });
 
-    // Tambahkan marker untuk setiap lokasi
+    // Tambahkan polygon dan marker untuk setiap lokasi
     <?php foreach ($lokasi as $key => $value): ?>
-        L.marker([<?= $value['latitude'] ?>, <?= $value['longitude'] ?>])
-            .bindPopup('<img src="<?= base_url('foto/'. $value['foto_sekolah'])?>" width="150px"><br>' +
+        var polygon = L.polygon([
+            [<?= $value['latitude'] ?> - 0.001, <?= $value['longitude'] ?> - 0.001],
+            [<?= $value['latitude'] ?> + 0.001, <?= $value['longitude'] ?> - 0.001],
+            [<?= $value['latitude'] ?> + 0.001, <?= $value['longitude'] ?> + 0.001],
+            [<?= $value['latitude'] ?> - 0.001, <?= $value['longitude'] ?> + 0.001]
+        ], {
+            color: 'red',
+            fillOpacity: 0.5
+        }).addTo(map);
+
+        var marker = L.marker([<?= $value['latitude'] ?>, <?= $value['longitude'] ?>])
+            .bindPopup('<img src="<?= base_url('foto/'. $value['foto_sekolah']) ?>" width="150px"><br>' +
                 'Nama Sekolah : <b><?= $value["nama_sekolah"] ?></b><br>' +
                 'Jenis Sekolah : <?= $value["jenis_sekolah"] ?><br>'
             )

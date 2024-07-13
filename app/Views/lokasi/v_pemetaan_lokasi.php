@@ -47,32 +47,42 @@
 
     // Memuat geojson 
     $.getJSON("<?= base_url('geojson/sekolah.geojson') ?>", function(data){
-    L.geoJson(data, {
-        style: function(feature) {
-            return {
-                fillOpacity: 0.5,
-                weight: 3,
-                opacity: 1,
-                color: getColor(feature.properties.jenis)
-            };
-        },
-        onEachFeature: function(feature, layer) {
-            if (feature.properties && feature.properties.keterangan) {
-                layer.bindPopup('<b>' + feature.properties.keterangan + '</b><br>Jenis: ' + feature.properties.jenis);
-            } else {
-                console.error("Property 'keterangan' or 'jenis' not found in GeoJSON feature:", feature);
+        L.geoJson(data, {
+            style: function(feature) {
+                return {
+                    fillOpacity: 0.5,
+                    weight: 3,
+                    opacity: 1,
+                    color: getColor(feature.properties.jenis)
+                };
+            },
+            onEachFeature: function(feature, layer) {
+                if (feature.properties && feature.properties.keterangan) {
+                    layer.bindPopup('<b>' + feature.properties.keterangan + '</b><br>Jenis: ' + feature.properties.jenis);
+                } else {
+                    console.error("Property 'keterangan' or 'jenis' not found in GeoJSON feature:", feature);
+                }
             }
-        }
-    }).addTo(map);
-});
+        }).addTo(map);
+    });
 
-    // Menambahkan marker untuk setiap lokasi
-    <?php foreach ($lokasi as $key => $value) { ?>
-        L.marker([<?= $value['latitude'] ?> , <?= $value['longitude'] ?>])
-            .bindPopup('<img src="<?= base_url('foto/'. $value['foto_sekolah'])?>" width="150px"><br>' +
-                'Nama Sekolah : <b><?= $value["nama_sekolah"] ?></b></br>' +
-                'Jenis Sekolah : <?= $value["jenis_sekolah"] ?></br>'
+    // Tambahkan polygon dan marker untuk setiap lokasi
+    <?php foreach ($lokasi as $key => $value): ?>
+        var polygon = L.polygon([
+            [<?= $value['latitude'] ?> - 0.001, <?= $value['longitude'] ?> - 0.001],
+            [<?= $value['latitude'] ?> + 0.001, <?= $value['longitude'] ?> - 0.001],
+            [<?= $value['latitude'] ?> + 0.001, <?= $value['longitude'] ?> + 0.001],
+            [<?= $value['latitude'] ?> - 0.001, <?= $value['longitude'] ?> + 0.001]
+        ], {
+            color: 'red',
+            fillOpacity: 0.5
+        }).addTo(map);
+
+        var marker = L.marker([<?= $value['latitude'] ?>, <?= $value['longitude'] ?>])
+            .bindPopup('<img src="<?= base_url('foto/'. $value['foto_sekolah']) ?>" width="150px"><br>' +
+                'Nama Sekolah : <b><?= $value["nama_sekolah"] ?></b><br>' +
+                'Jenis Sekolah : <?= $value["jenis_sekolah"] ?><br>'
             )
             .addTo(map);
-    <?php } ?>
+    <?php endforeach; ?>
 </script>
